@@ -1,14 +1,10 @@
-queue()
-    .defer(d3.csv, "data/stocks.csv")
-    .await(makeGraphs);
+// queue()
+//     .defer(d3.csv, "data/stocks.csv")
+//     .await(makeGraphs);
 
-function makeGraphs(error, stocksData) {
+// function makeGraphs(error, stocksData) {
 
-}
-
-//var spotifyApi = SpotifyWebApi();
-
-//console.log(spotifyApi);
+// }
 
 
 // var companyFinancialsData = [];
@@ -28,15 +24,19 @@ function makeGraphs(error, stocksData) {
 //       .await (makeGraphs);
 
 
-// function makeGraphs(error, financialData) {
-//     var ndx = crossfilter(financialData);
+queue()
+    .defer(d3.csv, "data/stocks.csv")
+    .await(makeGraphs);
 
-//     show_net_income(ndx);
 
-//     dc.renderAll();
+function makeGraphs(error, stocksData) {
+    var ndx = crossfilter(stocksData);
 
-//     //   console.log(financialData);
-// }
+    show_profits(ndx);
+
+
+      console.log(stocksData);
+}
 
 
 
