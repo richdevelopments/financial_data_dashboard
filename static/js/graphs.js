@@ -30,12 +30,12 @@ queue()
 
 
 function makeGraphs(error, stocksData) {
-    var ndx = crossfilter(stocksData);
+    // var ndx = crossfilter(stocksData);
 
-    show_profits(ndx);
+    // show_profits(ndx);
 
 
-      console.log(stocksData);
+    //   console.log(stocksData);
 }
 
 
