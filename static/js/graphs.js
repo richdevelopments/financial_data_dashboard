@@ -1,11 +1,3 @@
-// queue()
-//     .defer(d3.csv, "data/stocks.csv")
-//     .await(makeGraphs);
-
-// function makeGraphs(error, stocksData) {
-
-// }
-
 
 // var companyFinancialsData = [];
 
@@ -25,11 +17,11 @@
 
 
 queue()
-    .defer(d3.csv, "data/stocks.csv")
+    .defer(d3.csv, "data/aapl.csv")
     .await(makeGraphs);
 
 
-function makeGraphs(error, stocksData) {
+function makeGraphs(error, aaplData) {
     // var ndx = crossfilter(stocksData);
 
     // show_profits(ndx);
