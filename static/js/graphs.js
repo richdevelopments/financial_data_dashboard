@@ -17,38 +17,39 @@
 
 
 queue()
-    .defer(d3.csv, "data/aapl.csv")
-    .await(makeGraphs);
+    .defer(d3.csv, "data/forbes2017.csv")
+    .await(graphMaker);
 
 
-function makeGraphs(error, aaplData) {
-    // var ndx = crossfilter(stocksData);
+function graphmaker(error, forbesData) {
+    var ndx = crossfilter(forbesData);
 
-    // show_profits(ndx);
+    show_profits(ndx);
 
+    dc.renderAll();
 
-    //   console.log(stocksData);
 }
 
 
 
-// function show_net_income(ndx) {
-//     var dim = ndx.dimension(dc.pluck('netIncome'));
-//     var group = dim.group();
+function show_profits(ndx) {
+    var dim = ndx.dimension(dc.pluck('Profits'));
+    var group = dim.group();
 
-//     dc.barChart("#net-income")
-//         .width(400)
-//         .height(300)
-//         .margins({top: 10, right: 50, bottom: 30, left: 50})
-//         .dimension(dim)
-//         .group(group)
-//         .transitionDuration(500)
-//         .x(d3.scale.ordinal())
-//         .xUnits(dc.units.ordinal)
-//         .elasticY(true)
-//         .xAxisLabel("Company")
-//         .yAxis().ticks(20);
-// }
+    dc.barChart("#profits")
+        .width(700)
+        .height(500)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .dimension(dim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Company")
+        .yAxisLabel("2017 Profits")
+        .yAxis().ticks(10);
+}
 
 
 
