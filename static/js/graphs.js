@@ -17,11 +17,11 @@
 
 
 queue()
-    .defer(d3.csv, "data/forbes2017.csv")
-    .await(graphMaker);
+    .defer(d3.csv, "data/forbes2018.csv")
+    .await(makeGraphs);
 
 
-function graphmaker(error, forbesData) {
+function makeGraphs(error, forbesData) {
     var ndx = crossfilter(forbesData);
 
     show_profits(ndx);
@@ -33,7 +33,7 @@ function graphmaker(error, forbesData) {
 
 
 function show_profits(ndx) {
-    var dim = ndx.dimension(dc.pluck('Profits'));
+    var dim = ndx.dimension(dc.pluck('profits'));
     var group = dim.group();
 
     dc.barChart("#profits")
@@ -47,7 +47,7 @@ function show_profits(ndx) {
         .xUnits(dc.units.ordinal)
         .elasticY(true)
         .xAxisLabel("Company")
-        .yAxisLabel("2017 Profits")
+        .yAxisLabel("2018 Profits")
         .yAxis().ticks(10);
 }
 
